@@ -3,8 +3,8 @@
   "description": "Design Patterns Written in Typescript",
   "author": "Al Joseph Condino",
   "scripts": {
-    "style:check": "npx eslint src/**",
-    "style:fix": "npx eslint src/** --fix"
+    "style:check": "npx eslint src/**/**/*.ts",
+    "style:fix": "npx eslint src/**/**/*.ts --fix"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.27.1",
