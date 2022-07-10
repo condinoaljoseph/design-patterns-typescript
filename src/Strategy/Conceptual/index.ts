@@ -23,15 +23,20 @@ class Strategy {
     this.strategy = strategy;
   }
 
-  public setStrategy(user: string) {
+  public setStrategy(strategy: IStrategy) {
+    this.strategy = strategy;
+  }
+
+  public executeStrategy(user: string) {
     return this.strategy.formatName(user);
   }
 }
 
-const strategyUppercase = new UppercaseStrategy();
-const strategyLowercase = new LowercaseStrategy();
-const strategy1 = new Strategy(strategyUppercase);
-const strategy2 = new Strategy(strategyLowercase);
+const strategy = new Strategy(new UppercaseStrategy());
 
-console.log(strategy1.setStrategy('Dimple'));
-console.log(strategy2.setStrategy('Elpmid'));
+console.log('Strategy is set to uppercase formatting');
+console.log(strategy.executeStrategy('Elpmid'));
+
+strategy.setStrategy(new LowercaseStrategy());
+console.log('Strategy is set to lowercase formatting');
+console.log(strategy.executeStrategy('Dimple'));
