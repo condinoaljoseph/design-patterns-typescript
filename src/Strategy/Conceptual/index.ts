@@ -1,29 +1,37 @@
+/* eslint-disable max-classes-per-file */
+/* eslint-disable class-methods-use-this */
 interface IStrategy {
-    formatName: (name: string) => string;
+  formatName: (name: string) => string;
 }
 
-const UppercaseStrategy: IStrategy = {
-  formatName(name) {
+class UppercaseStrategy implements IStrategy {
+  formatName(name: string): string {
     return name.toUpperCase();
-  },
-};
+  }
+}
 
-const LowercaseStrategy: IStrategy = {
-  formatName(name) {
+class LowercaseStrategy implements IStrategy {
+  formatName(name: string): string {
     return name.toLowerCase();
-  },
-};
+  }
+}
 
-const Strategy = (strategy: IStrategy) => ({
-  applyStrategy(name: string) {
-    return strategy.formatName(name);
-  },
-});
+class Strategy {
+  private strategy: IStrategy;
 
-const strategyUppercase = UppercaseStrategy;
-const strategyLowercase = LowercaseStrategy;
-const strategy1 = Strategy(strategyUppercase);
-const strategy2 = Strategy(strategyLowercase);
+  constructor(strategy: IStrategy) {
+    this.strategy = strategy;
+  }
 
-console.log(strategy1.applyStrategy('Dimple'));
-console.log(strategy2.applyStrategy('Elpmid'));
+  public setStrategy(user: string) {
+    return this.strategy.formatName(user);
+  }
+}
+
+const strategyUppercase = new UppercaseStrategy();
+const strategyLowercase = new LowercaseStrategy();
+const strategy1 = new Strategy(strategyUppercase);
+const strategy2 = new Strategy(strategyLowercase);
+
+console.log(strategy1.setStrategy('Dimple'));
+console.log(strategy2.setStrategy('Elpmid'));
