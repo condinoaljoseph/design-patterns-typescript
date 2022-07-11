@@ -18,12 +18,21 @@ class Publisher implements IPublisher {
   }
 
   register(subscriber: ISubscriber) {
+    const hasExist = this.subscribers.includes(subscriber);
+    if (hasExist) {
+      console.log('Publisher: Subscriber has already been added');
+      return;
+    }
     this.subscribers.push(subscriber);
     console.log('registered new subscriber');
   }
 
   unregister(subscriber: ISubscriber) {
-    this.subscribers.splice(this.subscribers.indexOf(subscriber), 1);
+    const subscriberIndex = this.subscribers.indexOf(subscriber);
+    if (subscriberIndex === -1) {
+      console.log('Publisher: Subscriber does not exist');
+    }
+    this.subscribers.splice(subscriberIndex, 1);
     console.log('unregistered subscriber');
   }
 
@@ -44,27 +53,37 @@ interface ISubscriber {
 }
 
 class SubscriberA implements ISubscriber {
+  private name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+
   update(publisher: IPublisher) {
-    console.log(`A reacted to new ${publisher.getProduct()}`);
+    console.log(`${this.name} reacted to new ${publisher.getProduct()}`);
   }
 }
 
 class SubscriberB implements ISubscriber {
+  private name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+
   update(publisher: IPublisher) {
-    console.log(`B reacted to new ${publisher.getProduct()}`);
+    console.log(`${this.name} reacted to new ${publisher.getProduct()}`);
   }
 }
 
-const publisher = new Publisher('iphone 13');
+const publisher = new Publisher('iphone 14');
 
-const subscriberA = new SubscriberA();
-const subscriberB = new SubscriberB();
+const subscriberA = new SubscriberA('A');
+const subscriberB = new SubscriberB('B');
 
 publisher.register(subscriberA);
 publisher.register(subscriberB);
-
+publisher.register(subscriberA);
 publisher.notify();
-
 publisher.unregister(subscriberA);
-
 publisher.notify();
