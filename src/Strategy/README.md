@@ -7,4 +7,4 @@ This pattern allows us to add new functionality without refactoring the current 
 This pattern helps us to achieve two SOLID principle:
 
 - **Single Responsibility** A class should have only one reason to be changed.
-- **Open-Closed** Should be open for extension, but closed for modification
+- **Open/Closed** Should be open for extension, but closed for modification
