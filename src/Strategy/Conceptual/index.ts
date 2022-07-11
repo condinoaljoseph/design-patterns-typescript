@@ -16,6 +16,12 @@ class LowercaseStrategy implements IStrategy {
   }
 }
 
+class ReverseStrategy implements IStrategy {
+  formatName(name: string): string {
+    return name.split('').reverse().join('');
+  }
+}
+
 class Strategy {
   private strategy: IStrategy;
 
@@ -40,3 +46,7 @@ console.log(strategy.executeStrategy('Elpmid'));
 strategy.setStrategy(new LowercaseStrategy());
 console.log('Strategy is set to lowercase formatting');
 console.log(strategy.executeStrategy('Dimple'));
+
+strategy.setStrategy(new ReverseStrategy());
+console.log('Strategy is set to reverse string');
+console.log(strategy.executeStrategy('Vindecode'));
