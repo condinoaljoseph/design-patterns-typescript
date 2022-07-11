@@ -1,10 +1,10 @@
 ```mermaid
 classDiagram
-    IStrategy <|.. UppercaseStrategy
-    IStrategy <|.. LowercaseStrategy
-    IStrategy <|.. ReverseStrategy
+    IStrategy <|-- UppercaseStrategy
+    IStrategy <|-- LowercaseStrategy
+    IStrategy <|-- ReverseStrategy
     IStrategy: +formatName()
-    Strategy ..> IStrategy
+    Strategy --> IStrategy
     class UppercaseStrategy{
         +formatName()
     }

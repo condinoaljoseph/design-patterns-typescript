@@ -1,8 +1,8 @@
 ```mermaid
 classDiagram
-    SubscriberA ..|> ISubscriber
-    SubscriberB ..|> ISubscriber
-    Publisher ..> IPublisher
+    SubscriberA --|> ISubscriber
+    SubscriberB --|> ISubscriber
+    Publisher --> IPublisher
     ISubscriber: +update(Publisher publisher)
     IPublisher --> "0..*" ISubscriber
     class IPublisher{
