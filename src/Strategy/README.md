@@ -1,4 +1,4 @@
-# Strategy Patter
+# Strategy Pattern
 
 The strategy pattern defines a family of algorithms, encapsulate each one as an object and make them interchangeable independently of the clients the use them.
 
