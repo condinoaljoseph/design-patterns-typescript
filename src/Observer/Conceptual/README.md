@@ -4,6 +4,7 @@ classDiagram
     SubscriberB ..|> ISubscriber
     Publisher ..> IPublisher
     ISubscriber: +update(Publisher publisher)
+    IPublisher --> "0..*" ISubscriber
     class IPublisher{
         +register(ISubscriber subscriber)
         +unregister(ISubscriber subscriber)
