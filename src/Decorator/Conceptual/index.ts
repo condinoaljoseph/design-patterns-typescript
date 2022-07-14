@@ -1,20 +1,20 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable max-classes-per-file */
 
-interface Dairy {
+interface IDairy {
     getCost(): number;
 }
 
-class Vanilla implements Dairy {
+class Vanilla implements IDairy {
   getCost() {
     return 20;
   }
 }
 
-abstract class WithAddons implements Dairy {
-  private dairy: Dairy;
+abstract class WithAddons implements IDairy {
+  private dairy: IDairy;
 
-  constructor(dairy: Dairy) {
+  constructor(dairy: IDairy) {
     this.dairy = dairy;
   }
 
