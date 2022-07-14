@@ -1,6 +1,3 @@
-/* eslint-disable class-methods-use-this */
-/* eslint-disable max-classes-per-file */
-
 interface IDairy {
     getCost(): number;
 }

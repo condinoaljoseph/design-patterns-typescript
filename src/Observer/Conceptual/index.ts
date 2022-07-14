@@ -1,6 +1,3 @@
-/* eslint-disable class-methods-use-this */
-/* eslint-disable max-classes-per-file */
-/* eslint-disable no-use-before-define */
 interface IPublisher {
     register(subscriber: ISubscriber): void
     unregister(subscriber: ISubscriber): void

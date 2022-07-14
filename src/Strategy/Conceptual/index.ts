@@ -1,5 +1,3 @@
-/* eslint-disable max-classes-per-file */
-/* eslint-disable class-methods-use-this */
 interface IStrategy {
   formatName(name: string): string;
 }
