@@ -38,6 +38,10 @@ class HtmlUnknownElement implements HtmlElement {
 }
 
 const dom = new DOM();
-const element = dom.createHtmlElement('div')
+const div = dom.createHtmlElement('div');
+const button = dom.createHtmlElement('button');
+const unknown = dom.createHtmlElement('section');
 
-console.log(element.render());
+console.log(div.render());
+console.log(button.render());
+console.log(unknown.render());
