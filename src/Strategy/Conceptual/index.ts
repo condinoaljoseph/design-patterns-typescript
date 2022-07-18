@@ -1,26 +1,26 @@
-interface IStrategy {
+export interface IStrategy {
   formatName(name: string): string;
 }
 
-class UppercaseStrategy implements IStrategy {
+export class UppercaseStrategy implements IStrategy {
   formatName(name: string): string {
     return name.toUpperCase();
   }
 }
 
-class LowercaseStrategy implements IStrategy {
+export class LowercaseStrategy implements IStrategy {
   formatName(name: string): string {
     return name.toLowerCase();
   }
 }
 
-class ReverseStrategy implements IStrategy {
+export class ReverseStrategy implements IStrategy {
   formatName(name: string): string {
     return name.split('').reverse().join('');
   }
 }
 
-class Strategy {
+export class Strategy {
   private strategy: IStrategy;
 
   constructor(strategy: IStrategy) {
