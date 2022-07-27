@@ -61,14 +61,14 @@ interface ICommand {
 
 class BoldCommand implements ICommand {
     private editor: IEditor;
-    private prevText: string;
+    private prevText!: string;
 
     constructor(editor: IEditor) {
         this.editor = editor
-        this.prevText = this.editor.getText();
     }
 
     execute() {
+        this.prevText = this.editor.getText();
         this.editor.bold();
     }
 
@@ -79,14 +79,14 @@ class BoldCommand implements ICommand {
 
 class ItalicCommand implements ICommand {
     private editor: IEditor;
-    private prevText: string;
+    private prevText!: string;
 
     constructor(editor: IEditor) {
         this.editor = editor
-        this.prevText = this.editor.getText();
     }
 
     execute() {
+        this.prevText = this.editor.getText();
         this.editor.italic();
     }
 
@@ -97,14 +97,14 @@ class ItalicCommand implements ICommand {
 
 class UnderlineCommand implements ICommand {
     private editor: IEditor;
-    private prevText: string;
+    private prevText!: string;
 
     constructor(editor: IEditor) {
         this.editor = editor
-        this.prevText = this.editor.getText();
     }
 
     execute() {
+        this.prevText = this.editor.getText();
         this.editor.underline();
     }
 
@@ -123,7 +123,6 @@ const commandManager = new CommandManager();
 
 commandManager.setCommand(bold);
 commandManager.setCommand(italic);
-console.log(commandManager.getStack());
+commandManager.setCommand(underline);
 commandManager.undo();
-console.log(commandManager.getStack());
 console.log(editor.getText())
