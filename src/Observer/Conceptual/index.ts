@@ -1,13 +1,13 @@
 interface IPublisher {
-    register(subscriber: ISubscriber): void
-    unregister(subscriber: ISubscriber): void
-    notify(): void
-    getProduct(): string
+  register(subscriber: ISubscriber): void;
+  unregister(subscriber: ISubscriber): void;
+  notify(): void;
+  getProduct(): string;
+  setProduct(product: string): void;
 }
 
 class Publisher implements IPublisher {
   private subscribers: ISubscriber[] = [];
-
   private product: string;
 
   constructor(product: string) {
@@ -15,26 +15,29 @@ class Publisher implements IPublisher {
   }
 
   register(subscriber: ISubscriber) {
-    const hasExist = this.subscribers.includes(subscriber);
-    if (hasExist) {
+    if (this.subscribers.includes(subscriber)) {
       console.log('Publisher: Subscriber has already been added');
       return;
     }
     this.subscribers.push(subscriber);
-    console.log('registered new subscriber');
+    console.log('Registered new subscriber');
   }
 
   unregister(subscriber: ISubscriber) {
-    const subscriberIndex = this.subscribers.indexOf(subscriber);
-    if (subscriberIndex === -1) {
-      console.log('Publisher: Subscriber does not exist');
+    const index = this.subscribers.indexOf(subscriber);
+    if (index === -1) {
+      throw new Error('Publisher: Subscriber does not exist');
     }
-    this.subscribers.splice(subscriberIndex, 1);
-    console.log('unregistered subscriber');
+    this.subscribers.splice(index, 1);
+    console.log('Unregistered subscriber');
   }
 
   notify() {
-    console.log('notifying subscribers');
+    if (this.subscribers.length === 0) {
+      console.log('Publisher: No subscribers to notify');
+      return;
+    }
+    console.log('Notifying subscribers');
     this.subscribers.forEach((subscriber) => {
       subscriber.update(this);
     });
@@ -43,10 +46,16 @@ class Publisher implements IPublisher {
   getProduct() {
     return this.product;
   }
+
+  setProduct(product: string) {
+    this.product = product;
+    console.log(`Product updated to ${product}`);
+    this.notify();
+  }
 }
 
 interface ISubscriber {
-    update(publisher: IPublisher): void
+  update(publisher: IPublisher): void;
 }
 
 class SubscriberA implements ISubscriber {
@@ -84,3 +93,4 @@ publisher.register(subscriberA);
 publisher.notify();
 publisher.unregister(subscriberA);
 publisher.notify();
+publisher.setProduct('iphone 15');
