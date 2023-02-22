@@ -24,3 +24,7 @@ npm run test
 ## Motivation
 
 To write a resuable and extesible code. Might create a useful open-source library soon.
+
+## Reference
+
+- [refactoring.guru](https://refactoring.guru/)
