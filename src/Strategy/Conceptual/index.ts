@@ -1,37 +1,45 @@
+type FormatName = (name: string) => string;
+
 export interface IStrategy {
-  formatName(name: string): string;
+  formatName: FormatName;
 }
 
 export class UppercaseStrategy implements IStrategy {
-  formatName(name: string): string {
+  formatName: FormatName = (name: string) => {
     return name.toUpperCase();
-  }
+  };
 }
 
 export class LowercaseStrategy implements IStrategy {
-  formatName(name: string): string {
+  formatName: FormatName = (name: string) => {
     return name.toLowerCase();
-  }
+  };
 }
 
 export class ReverseStrategy implements IStrategy {
-  formatName(name: string): string {
+  formatName: FormatName = (name: string) => {
     return name.split('').reverse().join('');
-  }
+  };
 }
 
 export class Strategy {
   private strategy: IStrategy;
 
   constructor(strategy: IStrategy) {
+    if (!strategy) {
+      throw new Error('Strategy argument cannot be null or undefined');
+    }
     this.strategy = strategy;
   }
 
-  public setStrategy(strategy: IStrategy) {
+  public setStrategy(strategy: IStrategy): void {
+    if (!strategy) {
+      throw new Error('Strategy argument cannot be null or undefined');
+    }
     this.strategy = strategy;
   }
 
-  public executeStrategy(user: string) {
+  public executeStrategy(user: string): string {
     return this.strategy.formatName(user);
   }
 }
