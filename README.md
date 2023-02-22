@@ -5,8 +5,7 @@ Think of it as template for solving common issues in software development.
 ## Get Started
 
 ```bash
-npm install -g typescript
-npm install -g ts-node
+npm install -g typescript ts-node
 ```
 
 Run examples via
