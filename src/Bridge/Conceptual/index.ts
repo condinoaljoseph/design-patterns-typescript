@@ -20,27 +20,28 @@ interface IRenderer {
 
 // act as bridge between IShape and the concrete rendering implementation
 abstract class Renderer implements IRenderer {
-    private shape: IShape;
+    protected shape: IShape;
 
     constructor(shape: IShape) {
         this.shape = shape
     }
 
-    public render() {
-        this.shape.draw();
-    }
+    public abstract render(): void;
 }
 
+// allows the rendering tehcnology to vary independently of the shape being rendered
+// concrete implemenation
 class SVGRenderer extends Renderer {
     render() {
-        super.render();
+        this.shape.draw()
         console.log('rendering using SVG')
     }
 }
 
+// concreate implementation
 class CanvasRenderer extends Renderer {
     render() {
-        super.render()
+        this.shape.draw()
         console.log('rendering using canvas')
     }
 }
