@@ -1,28 +1,28 @@
 type FormatName = (name: string) => string;
 
-export interface IStrategy {
+interface IStrategy {
   formatName: FormatName;
 }
 
-export class UppercaseStrategy implements IStrategy {
+class UppercaseStrategy implements IStrategy {
   formatName: FormatName = (name: string) => {
     return name.toUpperCase();
   };
 }
 
-export class LowercaseStrategy implements IStrategy {
+class LowercaseStrategy implements IStrategy {
   formatName: FormatName = (name: string) => {
     return name.toLowerCase();
   };
 }
 
-export class ReverseStrategy implements IStrategy {
+class ReverseStrategy implements IStrategy {
   formatName: FormatName = (name: string) => {
     return name.split('').reverse().join('');
   };
 }
 
-export class Strategy {
+class Strategy {
   private strategy: IStrategy;
 
   constructor(strategy: IStrategy) {
