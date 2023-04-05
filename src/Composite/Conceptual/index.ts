@@ -37,12 +37,21 @@ class Manager extends Employee {
     }
 }
 
+const boss = new Manager('Elpmid', 100000);
 const staff = new Staff('AJ', 40000);
-const manager = new Manager('Dimpol', 80000);
+const manager1 = new Manager('Dimpol', 80000);
+const manager2 = new Manager('Impot', 50000);
 
 console.log(staff.getTotalSalary());
-console.log(manager.getTotalSalary());
+console.log(manager1.getTotalSalary());
 
-manager.add(staff);
+manager1.add(staff);
 
-console.log(manager.getTotalSalary());
+console.log(manager1.getTotalSalary());
+console.log(boss.getTotalSalary());
+
+boss.add(manager1);
+boss.add(manager2);
+
+console.log(JSON.stringify(boss.getSubordinates()));
+console.log(boss.getTotalSalary())
